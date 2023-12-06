@@ -1,2 +1,2 @@
-# alt3m1s.AJAX.github.io
+# AJAX
 Resumen de AJAX y ejemplo de su funcionamiento
