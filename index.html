@@ -1,0 +1,62 @@
+<!DOCTYPE html> <!--Hansel Perez_100323660-->
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        xmp {
+            color: blue; 
+        }
+        h1{
+            color: rgb(212, 13, 23);
+        }  
+    </style>
+</head>
+<body>
+
+<center><h1>AJAX y su Uso</h1></center>
+
+<p> AJAX es una técnica de desarrollo web que permite la actualización asíncrona de contenido en una página sin necesidad de recargarla por completo. Utiliza tecnologías como JavaScript, HTML, CSS, y XMLHttpRequest para enviar y recibir datos del servidor de forma asíncrona. Esto mejora la experiencia del usuario al proporcionar interactividad y dinamismo sin interrupciones.</p>
+
+<strong><p>Funcionamiento:</strong><br><br>
+
+    <strong>Envío de solicitud:</strong> El navegador web, mediante JavaScript, envía una solicitud al servidor usando el objeto XMLHttpRequest. Esta solicitud puede ser para recuperar datos, enviar datos o realizar otras operaciones en el servidor.<br><br>
+    <strong>Procesamiento en el servidor:</strong>El servidor procesa la solicitud y envía una respuesta al navegador. La respuesta puede contener datos en formato JSON, XML o cualquier otro formato.<br><br>
+    <strong>Manejo de la respuesta:</strong>Una vez que la respuesta es recibida, se puede manipular el contenido de la página web utilizando JavaScript para actualizar partes específicas de la misma, sin tener que recargar toda la página.<br><br>
+</p>
+<script>
+    function cargarDatos() {
+        // Crear un objeto XMLHttpRequest
+        var xhr = new XMLHttpRequest();
+
+        // Configurar la solicitud
+        xhr.open('GET', './datos.json', true);
+
+        // Configurar la función de devolución de llamada
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                // Manejar la respuesta
+                var datos = JSON.parse(xhr.responseText);
+                document.getElementById('resultado').innerHTML = 'Nombre: ' + datos.nombre + ', Edad: ' + datos.edad;
+            }
+        };
+
+        // Enviar la solicitud
+        xhr.send();
+    }
+</script>
+</head>
+<body>
+
+<h1>Presione el botón</h1>
+<button onclick="cargarDatos()">Cargar Datos</button>
+
+<div id="resultado"></div>
+
+</body>
+</html>
